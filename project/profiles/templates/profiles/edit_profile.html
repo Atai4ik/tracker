@@ -1,0 +1,12 @@
+{% extends 'post/base.html' %}
+
+{% block content %}
+
+    <h1 style="color: #2aabd2">Редактировать профиль</h1>
+   <form method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit">Сохранить</button>
+   </form>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'post/base.html' %}
+{% block content %}
+<p style="font-size: x-large;">{{ profile.user }}</p>
+<br>
+    {% if profile.avatar %}
+    <img style="height: 150px" src="{{ profile.avatar.url }}"><br>
+    {% endif %}
+    <div>
+        <p>Имя --- {{ profile.first_name }}</p><br>
+        <p>Фамилия --- {{ profile.last_name }} </p><br>
+        <p>День рождения --- {{ profile.birthday }}</p><br>
+        <p>Телефон --- {{ profile.phone }}</p><br>
+        <p>Дата создания --- {{ profile.created_at }}</p><br>
+        <p>Баланс --- {{ profile.balance }}</p>
+        <a href="{% url 'profile:edit' %}">Редактировать профиль</a>
+    </div>
+{% endblock %}

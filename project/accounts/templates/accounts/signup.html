@@ -1,0 +1,75 @@
+{% extends "post/base.html" %}
+{% load static %}
+
+{% block content %}
+
+{% if form.errors %}
+    <div id="form-error">
+     <p>The operation could not be performed because one or more error(s) occurred.<br />Please resubmit the form after making the following changes:</p>
+     <ul>
+     {% for field in form %}
+         {% if field.errors|striptags %}
+            <li>{{ field.label }} - {{ field.errors|striptags }}</li>
+         {% endif %}
+     {% endfor %}
+     </ul>
+    </div>
+{% endif %}
+
+<form class="form-horizontal" action='' method="POST">
+    {% csrf_token %}
+  <fieldset>
+    <div id="legend">
+      <legend class="">Регистрация</legend>
+    </div>
+    <div class="control-group">
+      <!-- Username -->
+      <label class="control-label"  for="username">Username</label>
+      <div class="controls">
+        {{ form.username.label }}
+        {{ form.username}}
+        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- E-mail -->
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        {{ form.email.label }}
+        {{ form.email}}
+        <p class="help-block">Please provide your E-mail</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password-->
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        {{ form.password.label }}
+        {{ form.password }}
+        <p class="help-block">Password should be at least 4 characters</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Password -->
+      <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+      <div class="controls">
+        {{ form.password_confirmation.label }}
+        {{ form.password_confirmation }}
+        <p class="help-block">Please confirm password</p>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button class="btn btn-success">Зарегистрировать</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}
+
+
