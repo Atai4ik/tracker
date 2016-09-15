@@ -1,1 +1,7 @@
 *.pyc
+*.jpeg
+*.png
+media/
+.media/
+idea/
+.idea/
